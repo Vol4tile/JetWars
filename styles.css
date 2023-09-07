@@ -4,7 +4,7 @@ html {
   padding: 0;
   width: 100%;
   height: 100%;
-  overflow: hidden; 
+  overflow: hidden;
 }
 
 #scene {
@@ -12,7 +12,7 @@ html {
   width: 100%;
   height: 100%;
   background: url("assets/bg.jpg");
-  background-size: cover; 
+  background-size: cover;
 }
 #character {
   position: absolute;
@@ -22,6 +22,7 @@ html {
   background-size: cover;
   transform: scaleX(-1);
   bottom: 0; /* Karakterin en altta başlaması için */
+  animation: yukariAsagi 2s linear infinite;
 }
 
 .enemy {
@@ -30,10 +31,16 @@ html {
   background: url("assets/plane.png");
   background-size: cover;
   position: absolute;
-
 }
 
 .bullet {
+  width: 20px;
+  height: 20px;
+  background: url("assets/rocket.png");
+  background-size: cover;
+  position: absolute;
+}
+.enemy-bullet {
   width: 20px;
   height: 20px;
   background: url("assets/rocket.png");
@@ -46,4 +53,18 @@ html {
   top: 0;
   left: 0;
   color: white;
+}#health{
+  background-color: black;
+  position: absolute;
+  top: 0;
+  left: 250px;
+  color: white;
+}
+@keyframes yukariAsagi {
+  0%, 100% {
+      transform: translateY(0) scaleX(-1); /* Hem yatayda hem de dikeyde ters çevir */
+  }
+  50% {
+      transform: translateY(20px) scaleX(-1); /* Hem yatayda hem de dikeyde ters çevir */
+  }
 }
