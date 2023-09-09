@@ -213,7 +213,7 @@ function fireEnemyBullet(enemy) {
   bullet.style.bottom = enemyY + 25 + "px"; // Karakterin ortasından çıkması için
   scene.appendChild(bullet);
   bullets.push(bullet);
-  console.log(bullet);
+
 }
 
 function moveBullets() {
@@ -221,7 +221,7 @@ function moveBullets() {
     let bullet = bullets[i];
     const bulletStyles = window.getComputedStyle(bullet);
     let bulletX = parseInt(bulletStyles.getPropertyValue("left"));
-    console.log(bulletX);
+   
     if (bullet.classList.contains("enemy-bullet")) {
       // Düşman mermileri sola doğru hareket etmeli
       if (bulletX <= 0) {
@@ -255,12 +255,31 @@ function isCollision(element1, element2) {
   let rect1 = element1.getBoundingClientRect();
   let rect2 = element2.getBoundingClientRect();
 
-  return !(
-    rect1.right < rect2.left ||
-    rect1.left > rect2.right ||
-    rect1.bottom < rect2.top ||
-    rect1.top > rect2.bottom
-  );
+  if (
+    rect1.right >= rect2.left &&
+    rect1.left <= rect2.right &&
+    rect1.bottom >= rect2.top &&
+    rect1.top <= rect2.bottom
+  ) {
+    // İki element çarpıştı, patlama oluştur
+    createExplosion(rect1);
+    return true;
+  }
+
+  return false;
+}
+
+function createExplosion(x) {
+
+  const explosion = document.createElement("div");
+  explosion.className = "explosion";
+  explosion.style.left = x.x + "px";
+  explosion.style.top = x.y + "px";
+  scene.appendChild(explosion);
+
+  setTimeout(() => {
+    explosion.remove();
+  }, 500);
 }
 
 function endGame() {

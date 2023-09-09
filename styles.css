@@ -17,19 +17,23 @@ html {
 #character {
   position: absolute;
   width: 150px;
-  height: 150px;
+  height: 50px;
   background: url("assets/plane.png");
   background-size: cover;
+  background-position: center;
   transform: scaleX(-1);
+  padding: 0s;
   bottom: 0; /* Karakterin en altta başlaması için */
   animation: yukariAsagi 2s linear infinite;
 }
 
 .enemy {
   width: 100px;
-  height: 100px;
+  height: 40px;
   background: url("assets/plane.png");
+  background-position: center;
   background-size: cover;
+
   position: absolute;
 }
 
@@ -37,6 +41,7 @@ html {
   width: 20px;
   height: 20px;
   background: url("assets/rocket.png");
+
   background-size: cover;
   position: absolute;
 }
@@ -44,6 +49,7 @@ html {
   width: 20px;
   height: 20px;
   background: url("assets/rocket.png");
+
   background-size: cover;
   position: absolute;
 }
@@ -53,18 +59,31 @@ html {
   top: 0;
   left: 0;
   color: white;
-}#health{
+}
+#health {
   background-color: black;
   position: absolute;
   top: 0;
   left: 250px;
   color: white;
 }
+
+.explosion {
+  width: 50px;
+  height: 50px;
+  background: url("./assets/explosion.gif"); /* Patlama efekti görüntüsü */
+  background-size: cover;
+  position: absolute;
+
+}
+
+
 @keyframes yukariAsagi {
-  0%, 100% {
-      transform: translateY(0) scaleX(-1); /* Hem yatayda hem de dikeyde ters çevir */
+  0%,
+  100% {
+    transform: translateY(0) scaleX(-1); /* Hem yatayda hem de dikeyde ters çevir */
   }
   50% {
-      transform: translateY(20px) scaleX(-1); /* Hem yatayda hem de dikeyde ters çevir */
+    transform: translateY(20px) scaleX(-1); /* Hem yatayda hem de dikeyde ters çevir */
   }
 }
